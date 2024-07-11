@@ -1,0 +1,45 @@
+{% extends 'tienda/plantilla.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Acerca de nosotros</h1>
+<!-- aqui estan los integrantes -->
+<div class="container-items">
+      <div class="item">
+        <figure>
+          <img
+            src="{% static 'img/Jehison_perfil.jpg' %}"
+            alt="producto"
+          />
+        </figure>
+        <div class="info-product">
+          <h2>Jehison Arancibia</h2>
+          <p class="price">Es el cerebro y lider del grupo. Todo un crack de la programacion.</p>
+        </div>
+      </div>
+      <div class="item">
+        <figure>
+          <img
+            src="{% static 'img/Jose_perfil.jpg' %}"
+            alt="producto"
+          />
+        </figure>
+        <div class="info-product">
+          <h2>José Gomez</h2>
+          <p class="price">Es el npc del grupo. Sirve de apoyo moral</p>
+        </div>
+      </div>
+      <div class="item">
+        <figure>
+          <img
+            src="{% static 'img/Mauricio_perfil.jpg' %}"
+            alt="producto"
+          />
+        </figure>
+        <div class="info-product">
+          <h2>Mauricio Reyes</h2>
+          <p class="price">El fantasma del grupo. Aparece cada 2 semanas para trabajar y dar ideas.</p>
+        </div>
+      </div>
+</div>
+{% endblock %}
