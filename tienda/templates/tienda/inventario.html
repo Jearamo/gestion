@@ -78,6 +78,10 @@
                 <label for="stockProducto" class="form-label">Stock</label>
                 <input type="number" class="form-control" id="stockProducto" required>
             </div>
+            <div class="mb-3">
+              <label for="Historial" class="form-label">Seguimiento</label>
+              <input type="text" class="form-control" id="HistorialProducto" required>
+          </div>
             <button type="submit" class="btn btn-primary">Agregar Producto</button>
         </form>
 
@@ -90,7 +94,7 @@
                         <th scope="col">Nombre del Producto</th>
                         <th scope="col">Precio</th>
                         <th scope="col">Stock</th>
-                        <th scope="col">Acciones</th>
+                        <th scope="col">Seguimiento</th>
                     </tr>
                 </thead>
                 <tbody id="tabla-productos">
@@ -150,6 +154,7 @@
                                 <td>${producto.nombre}</td>
                                 <td>${producto.precio}</td>
                                 <td>${producto.stock}</td>
+                                <td>${producto.historial}</td>
                                 <td>
                                     <button class="btn btn-warning btn-sm" onclick="editarProducto(${index})">Editar</button>
                                     <button class="btn btn-danger btn-sm" onclick="eliminarProducto(${index})">Eliminar</button>
@@ -166,6 +171,7 @@
             let nombre = document.getElementById('nombreProducto').value.trim();
             let precio = parseFloat(document.getElementById('precioProducto').value);
             let stock = parseInt(document.getElementById('stockProducto').value);
+            let historial = document.getElementById('HistorialProducto').value.trim();
 
             // Validaciones
             if (nombre === '') {
@@ -180,10 +186,14 @@
                 alert('El stock no puede ser un número negativo.');
                 return;
             }
+            if (historial === '') {
+                alert('El historial del producto no puede estar vacío.');
+                return;
+            }
 
             let productos = cargarProductos();
 
-            productos.push({ nombre: nombre, precio: precio, stock: stock });
+            productos.push({ nombre: nombre, precio: precio, stock: stock, historial: historial });
 
             guardarProductos(productos);
             actualizarTablaProductos();
@@ -200,6 +210,7 @@
             document.getElementById('nombreProducto').value = producto.nombre;
             document.getElementById('precioProducto').value = producto.precio;
             document.getElementById('stockProducto').value = producto.stock;
+            document.getElementById('HistorialProducto').value = producto.historial;
 
             // Actualizar el formulario para editar
             document.getElementById('form-producto').addEventListener('submit', function(event) {
@@ -208,6 +219,7 @@
                 producto.nombre = document.getElementById('nombreProducto').value.trim();
                 producto.precio = parseFloat(document.getElementById('precioProducto').value);
                 producto.stock = parseInt(document.getElementById('stockProducto').value);
+                producto.historial = document.getElementById('HistorialProducto').value.trim();
 
                 // Validaciones
                 if (producto.nombre === '') {
@@ -220,6 +232,10 @@
                 }
                 if (producto.stock < 0) {
                     alert('El stock no puede ser un número negativo.');
+                    return;
+                }
+                if (producto.historial === '') {
+                    alert('El historial del producto no puede estar vacío.');
                     return;
                 }
 
