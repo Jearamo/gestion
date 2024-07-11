@@ -1,8 +1,5 @@
 LISTA DE COMANDOS A EJECUTAR
 
-IMPORTANTE# dirigirse a la carpeta "trabajo_semestral_django" con comando cd. 
-Ej= cd "C:\Users\usuario\Documents\GitHub\trabajo_final_django\trabajo_semestral_django"
-
 #1- Entrar al entorno virtual con ".\virtual\Scripts\activate"
 #2- python -m pip install --upgrade pip
 #3- pip install -r requirements.txt
