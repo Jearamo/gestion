@@ -139,6 +139,8 @@
             let tablaProductosVenta = document.getElementById('tabla-productos-venta');
             tablaProductosVenta.innerHTML = '';
 
+            let bajoStock = false;
+
             productos.forEach((producto, index) => {
                 let fila = `<tr>
                                 <th scope="row">${index + 1}</th>
@@ -147,7 +149,15 @@
                                 <td>${producto.stock}</td>
                             </tr>`;
                 tablaProductosVenta.innerHTML += fila;
+
+                if (producto.stock < 10) {
+                    bajoStock = true;
+                }
             });
+
+            if (bajoStock) {
+                alert('Alerta: Algunos productos tienen un stock menor a 10.');
+            }
 
             // Actualizar opciones del select de productos
             let selectProductoVenta = document.getElementById('productoVenta');
